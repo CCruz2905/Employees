@@ -22,7 +22,7 @@
             android:inputType="text" />
 
         <Button
-            android:id="@+id/buttonSave"
+            android:id="@+id/buttonSearch"
             style="@style/Forms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -89,6 +89,39 @@
             android:hint="@string/hire_date"
             android:inputType="datetime"
             android:importantForAutofill="no" />
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/buttonEnable"
+                style="@style/employeeSelection"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:onClick="enableFields"
+                android:text="@string/update" />
+
+            <Button
+                android:id="@+id/buttonUpdate"
+                style="@style/employeeSelection"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="updateEmployee"
+                android:text="@string/save"
+                android:visibility="gone"
+                tools:visibility="gone" />
+
+            <Button
+                android:id="@+id/button"
+                style="@style/employeeSelection"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|end"
+                android:text="@string/delete" />
+        </TableRow>
 
     </LinearLayout>
 

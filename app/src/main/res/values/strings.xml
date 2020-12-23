@@ -13,4 +13,6 @@
     <string name="hire_date">Fecha de contratación</string>
     <string name="search">Buscar</string>
     <string name="user">Nombre de usuario</string>
+    <string name="delete">Dar de baja</string>
+    <string name="update">Actualizar</string>
 </resources>

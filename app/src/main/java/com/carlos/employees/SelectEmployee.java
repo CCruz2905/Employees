@@ -2,14 +2,16 @@ package com.carlos.employees;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class SelectEmployee extends AppCompatActivity {
@@ -23,6 +25,9 @@ public class SelectEmployee extends AppCompatActivity {
     protected EditText lastLastName;
     protected EditText phone;
     protected EditText hireDate;
+
+    protected Button buttonEnable;
+    protected Button buttonUpdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +47,12 @@ public class SelectEmployee extends AppCompatActivity {
         phone = findViewById(R.id.textViewPhone);
         hireDate = findViewById(R.id.textViewHireDate);
 
-        disableFields();
+        buttonEnable = findViewById(R.id.buttonEnable);
+        buttonUpdate = findViewById(R.id.buttonUpdate);
+
+//        buttonUpdate.setVisibility(View.GONE);
+
+        disableEnableFields(false);
     }
 
     public void selectEmployee(View v) {
@@ -95,6 +105,59 @@ public class SelectEmployee extends AppCompatActivity {
         }
     }
 
+    public void enableFields(View v) {
+        disableEnableFields(true);
+
+        buttonEnable.setVisibility(View.GONE);
+        buttonUpdate.setVisibility(View.VISIBLE);
+    }
+
+    public void disableFields() {
+        disableEnableFields(false);
+
+        buttonEnable.setVisibility(View.VISIBLE);
+        buttonUpdate.setVisibility(View.GONE);
+    }
+
+    public void updateEmployee(View v) {
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        try {
+            // New value for one column
+            ContentValues values = new ContentValues();
+            values.put(FeedReaderContract.FeedEntry.COLUMN_USER, user.getText().toString());
+            values.put(FeedReaderContract.FeedEntry.COLUMN_NAME, firstName.getText().toString());
+            values.put(FeedReaderContract.FeedEntry.COLUMN_LAST_NAME, lastName.getText().toString());
+            values.put(FeedReaderContract.FeedEntry.COLUMN_LAST_LAST_NAME, lastLastName.getText().toString());
+            values.put(FeedReaderContract.FeedEntry.COLUMN_PHONE, phone.getText().toString());
+
+            // Which row to update, based on the title
+            String selection = FeedReaderContract.FeedEntry.COLUMN_USER + " LIKE ?";
+            String[] selectionArgs = { user.getText().toString() };
+
+            int count = db.update(
+                    FeedReaderContract.FeedEntry.TABLE_NAME,
+                    values,
+                    selection,
+                    selectionArgs);
+
+            Toast toast = Toast.makeText(getApplicationContext(), "Empleado actualizado", Toast.LENGTH_LONG);
+            toast.show();
+
+        } catch (Exception e) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Empleado no se pudo actualizar", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
+        disableFields();
+        user.setText("");
+    }
+
+    public void deleteEmployee() {
+
+    }
+
     private void cleanFields() {
         userEditable.setText("");
         firstName.setText("");
@@ -104,12 +167,12 @@ public class SelectEmployee extends AppCompatActivity {
         hireDate.setText("");
     }
 
-    private void disableFields() {
-        userEditable.setEnabled(false);
-        firstName.setEnabled(false);
-        lastName.setEnabled(false);
-        lastLastName.setEnabled(false);
-        phone.setEnabled(false);
+    private void disableEnableFields(boolean flag) {
+        userEditable.setEnabled(flag);
+        firstName.setEnabled(flag);
+        lastName.setEnabled(flag);
+        lastLastName.setEnabled(flag);
+        phone.setEnabled(flag);
         hireDate.setEnabled(false);
     }
 }
