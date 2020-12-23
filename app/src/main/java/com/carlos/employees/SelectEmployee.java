@@ -145,6 +145,8 @@ public class SelectEmployee extends AppCompatActivity {
             Toast toast = Toast.makeText(getApplicationContext(), "Empleado actualizado", Toast.LENGTH_LONG);
             toast.show();
 
+            cleanFields();
+
         } catch (Exception e) {
             Toast toast = Toast.makeText(getApplicationContext(), "Empleado no se pudo actualizar", Toast.LENGTH_LONG);
             toast.show();
@@ -154,8 +156,26 @@ public class SelectEmployee extends AppCompatActivity {
         user.setText("");
     }
 
-    public void deleteEmployee() {
+    public void deleteEmployee(View v) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
 
+        try {
+            // Define 'where' part of query.
+            String selection = FeedReaderContract.FeedEntry.COLUMN_USER + " LIKE ?";
+            // Specify arguments in placeholder order.
+            String[] selectionArgs = { user.getText().toString() };
+            // Issue SQL statement.
+            int deletedRows = db.delete(FeedReaderContract.FeedEntry.TABLE_NAME, selection, selectionArgs);
+
+            Toast toast = Toast.makeText(getApplicationContext(), "Empleado dado de baja", Toast.LENGTH_LONG);
+            toast.show();
+        } catch (Exception e) {
+            Toast toast = Toast.makeText(getApplicationContext(), e + "", Toast.LENGTH_LONG);
+            toast.show();
+        }
+
+        user.setText("");
+        cleanFields();
     }
 
     private void cleanFields() {
@@ -168,7 +188,7 @@ public class SelectEmployee extends AppCompatActivity {
     }
 
     private void disableEnableFields(boolean flag) {
-        userEditable.setEnabled(flag);
+        userEditable.setEnabled(false);
         firstName.setEnabled(flag);
         lastName.setEnabled(flag);
         lastLastName.setEnabled(flag);
