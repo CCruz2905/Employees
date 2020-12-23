@@ -11,7 +11,17 @@
       android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editTextName"
+        android:id="@+id/editTextUser"
+        style="@style/Forms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/user"
+        android:inputType="textPersonName"
+        android:importantForAutofill="no" />
+
+    <EditText
+        android:id="@+id/textViewName"
         style="@style/Forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +32,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editTextLastName"
+        android:id="@+id/textViewLastName"
         style="@style/Forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -32,7 +42,7 @@
         android:autofillHints="false"/>
 
     <EditText
-        android:id="@+id/editTextLastLastName"
+        android:id="@+id/textViewLastLastName"
         style="@style/Forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,7 +52,7 @@
         android:autofillHints="false"/>
 
     <EditText
-        android:id="@+id/editTextPhone"
+        android:id="@+id/textViewPhone"
         style="@style/Forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,10 +62,11 @@
         android:autofillHints="false"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/buttonSave"
         style="@style/Forms"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="insertEmployee"
         android:text="@string/save" />
   </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

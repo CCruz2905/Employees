@@ -19,6 +19,7 @@ public class FeedReaderContract {
      * */
     public static class FeedEntry implements BaseColumns {
         public static final String TABLE_NAME = "employees";
+        public static final String COLUMN_USER = "user";
         public static final String COLUMN_NAME = "name";
         public static final String COLUMN_LAST_NAME = "last_name";
         public static final String COLUMN_LAST_LAST_NAME = "last_last_name";

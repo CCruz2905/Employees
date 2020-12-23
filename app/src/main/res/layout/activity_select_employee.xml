@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectEmployee">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextUser"
+            style="@style/Forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/user"
+            android:importantForAutofill="no"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/buttonSave"
+            style="@style/Forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="selectEmployee"
+            android:text="@string/search" />
+
+        <EditText
+            android:id="@+id/editViewUserEditable"
+            style="@style/Forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="false"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/user"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/textViewName"
+            style="@style/Forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="false"
+            android:ems="10"
+            android:fontFamily="@font/roboto"
+            android:hint="@string/name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/textViewLastName"
+            style="@style/Forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="false"
+            android:ems="10"
+            android:hint="@string/last_name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/textViewLastLastName"
+            style="@style/Forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="false"
+            android:ems="10"
+            android:hint="@string/last_last_name"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/textViewPhone"
+            style="@style/Forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="false"
+            android:ems="10"
+            android:hint="@string/phone"
+            android:inputType="phone" />
+
+        <EditText
+            android:id="@+id/textViewHireDate"
+            style="@style/Forms"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hire_date"
+            android:inputType="datetime"
+            android:importantForAutofill="no" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

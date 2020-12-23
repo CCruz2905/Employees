@@ -17,7 +17,6 @@ public class MainActivity extends AppCompatActivity {
     // **************************************************
     // Protected methods
     // **************************************************
-
     /**
      * Initialize Main Activity View
      *
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     // **************************************************
-    // Private methods
+    // Public methods
     // **************************************************
     /**
      * OnClick Method, helps redirect to InsertView
@@ -40,6 +39,15 @@ public class MainActivity extends AppCompatActivity {
      */
     public void insertEmployeeView(View v) {
         Intent intent = new Intent(this, InsertEmployee.class);
+        startActivity(intent);
+    }
+
+    /**
+     * OnClick Method, helps redirect to InsertView
+     *
+     */
+    public void selectEmployeeView(View v) {
+        Intent intent = new Intent(this, SelectEmployee.class);
         startActivity(intent);
     }
 }

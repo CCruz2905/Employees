@@ -9,4 +9,8 @@
     <string name="name">Nombre (s)</string>
     <string name="add_employee">Agregar empleado</string>
     <string name="search_employee">Buscar empleado</string>
+    <string name="id">ID</string>
+    <string name="hire_date">Fecha de contratación</string>
+    <string name="search">Buscar</string>
+    <string name="user">Nombre de usuario</string>
 </resources>
